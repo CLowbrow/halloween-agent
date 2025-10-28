@@ -1,0 +1,16 @@
+{
+  "name": "halloween",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "making photos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@openai/agents": "^0.2.1",
+    "openai": "^6.7.0"
+  }
+}
