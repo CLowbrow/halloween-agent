@@ -2,7 +2,7 @@ import * as fs from "node:fs";
 import * as os from "node:os";
 import * as path from "node:path";
 import { spawnSync } from "node:child_process";
-import { runMonsterMakeover } from "./monsterAgent.js";
+import { runMonsterizer } from "./monsterAgent.js";
 
 function openFile(filePath) {
   if (process.platform === "darwin") {
@@ -32,11 +32,11 @@ async function main() {
   const imageBase64 = imageBuffer.toString("base64");
   const imageDataUrl = `data:${mimeType};base64,${imageBase64}`;
 
-  const transformedImageBase64 = await runMonsterMakeover(imageDataUrl);
+  const transformedImageBase64 = await runMonsterizer(imageDataUrl);
   const transformedBuffer = Buffer.from(transformedImageBase64, "base64");
   const transformedImagePath = path.join(
     os.tmpdir(),
-    `monster-makeover-${Date.now()}.jpeg`
+    `monsterizer-${Date.now()}.jpeg`
   );
   fs.writeFileSync(transformedImagePath, transformedBuffer);
 

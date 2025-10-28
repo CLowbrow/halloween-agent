@@ -10,7 +10,7 @@ import { OpenAIAgentsTraceProcessor } from "@braintrust/openai-agents";
 
 // Initialize Braintrust logger
 const logger = initLogger({
-  projectName: "Monster Makeover",
+  projectName: "Monsterizer",
 });
 
 // Create the tracing processor
@@ -18,7 +18,7 @@ const processor = new OpenAIAgentsTraceProcessor({ logger });
 
 addTraceProcessor(processor);
 
-export async function runMonsterMakeover(imageDataUrl) {
+export async function runMonsterizer(imageDataUrl) {
   const agent = new Agent({
     name: "Image generator",
     instructions: "You are a helpful agent.",
@@ -31,7 +31,7 @@ export async function runMonsterMakeover(imageDataUrl) {
     ],
   });
 
-  return withTrace("Monster makeover", async () => {
+  return withTrace("Monsterizer", async () => {
     console.log("Asking the agent to identify the monster in the photo...");
     const guessResult = await run(agent, [
       {
@@ -65,7 +65,7 @@ export async function runMonsterMakeover(imageDataUrl) {
             type: "input_text",
             text:
               `Generate an image using this photo where the person in it looks like a ${guessedMonster}. ` +
-              `Keep the background recognizable and the person's pose consistent. Return only the transformed image.`,
+              `Keep the background recognizable and the person's pose consistent. Make the ambiance spooky. Return only the transformed image.`,
           },
           {
             type: "input_image",
