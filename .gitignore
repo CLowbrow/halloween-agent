@@ -1,6 +1,9 @@
 # Dependencies
 node_modules/
 
+# Project files
+images/
+
 # Logs
 npm-debug.log*
 yarn-debug.log*
