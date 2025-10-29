@@ -3,16 +3,7 @@ import * as os from "node:os";
 import * as path from "node:path";
 import { spawnSync } from "node:child_process";
 import { runMonsterizer } from "./monsterAgent.js";
-
-function openFile(filePath) {
-  if (process.platform === "darwin") {
-    spawnSync("open", [filePath], { stdio: "inherit" });
-  } else if (process.platform === "win32") {
-    spawnSync("cmd", ["/c", "start", "", filePath], { shell: true });
-  } else {
-    spawnSync("xdg-open", [filePath], { stdio: "inherit" });
-  }
-}
+import open from "open";
 
 async function main() {
   const [, , providedPath] = process.argv;
@@ -41,7 +32,7 @@ async function main() {
   fs.writeFileSync(transformedImagePath, transformedBuffer);
 
   console.log(`Opening transformed image: ${transformedImagePath}`);
-  openFile(transformedImagePath);
+  open(transformedImagePath);
 }
 
 main().catch((error) => {
